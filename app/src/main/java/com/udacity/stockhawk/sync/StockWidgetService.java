@@ -3,6 +3,7 @@ package com.udacity.stockhawk.sync;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Binder;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -78,17 +79,31 @@ public class StockWidgetService extends RemoteViewsService {
                 views.setTextViewText(R.id.stock_symbol, data.getString(data.getColumnIndex
                         (getResources().getString(R.string.string_symbol))));
 
-                /*if (data.getInt(data.getColumnIndex(QuoteColumns.ISUP)) == 1) {
+                if (data.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE) > 0) {
                     views.setInt(R.id.change, getResources().getString(R.string.string_set_background_resource), R.drawable.percent_change_pill_green);
                 } else {
                     views.setInt(R.id.change, getResources().getString(R.string.string_set_background_resource), R.drawable.percent_change_pill_red);
-                }*/
+                }
 
-               // if (Utils.showPercent) {
-               //     views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(QuoteColumns.PERCENT_CHANGE)));
+                //if (Utils.showPercent) {
+                //    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(Contract.Quote.POSITION_PERCENTAGE_CHANGE)));
                 //} else {
                     views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE)));
-               // }
+                //}
+
+                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+
+                Log.i("STOCK HAWK PRUEBA", data.getString(data.getColumnIndex
+                        (getResources().getString(R.string.string_symbol))));
+                Log.i("STOCK HAWK PRUEBA", data.getString(data.getColumnIndex
+                        (getResources().getString(R.string.string_symbol))));
+                Log.i("STOCK HAWK PRUEBA", data.getString(data.getColumnIndex
+                        (getResources().getString(R.string.string_symbol))));
+
+
 
                 final Intent fillInIntent = new Intent();
                 fillInIntent.putExtra(getResources().getString(R.string.string_symbol), data.getString(data.getColumnIndex(Contract.Quote.COLUMN_SYMBOL)));

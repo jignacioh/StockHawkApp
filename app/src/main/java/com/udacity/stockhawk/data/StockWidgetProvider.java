@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Binder;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -70,9 +71,27 @@ public class StockWidgetProvider implements RemoteViewsService.RemoteViewsFactor
         /** Populate your widget's single list item **/
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.list_item_quote);
         cursor.moveToPosition(i);
+
+        //remoteViews.setTextViewText(R.id.stock_symbol,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL)));
+        //remoteViews.setTextViewText(R.id.price,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE)));
+        //remoteViews.setTextViewText(R.id.change,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE)));
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
         remoteViews.setTextViewText(R.id.stock_symbol,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL)));
         remoteViews.setTextViewText(R.id.price,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE)));
         remoteViews.setTextViewText(R.id.change,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE)));
+
         /*if (cursor.getString(cursor.getColumnIndex(QuoteColumns.ISUP)).equals("1")) {
             remoteViews.setInt(R.id.change, "setBackgroundResource", R.drawable.percent_change_pill_green);
         } else {
