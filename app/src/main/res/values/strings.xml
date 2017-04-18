@@ -31,5 +31,12 @@
 
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
+    <string name="lb_stock_widget_title">My widget</string>
+    <string name="lb_stock_widget_detail">My own detail</string>
+
+    <string name="string_set_background_resource" translatable="false">setBackgroundResource</string>
+    <string name="string_symbol"  translatable="false">symbol</string>
 </resources>
