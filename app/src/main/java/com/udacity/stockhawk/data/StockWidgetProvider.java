@@ -75,19 +75,10 @@ public class StockWidgetProvider implements RemoteViewsService.RemoteViewsFactor
         //remoteViews.setTextViewText(R.id.stock_symbol,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL)));
         //remoteViews.setTextViewText(R.id.price,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE)));
         //remoteViews.setTextViewText(R.id.change,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE)));
+
+
         Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-        Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
+
         remoteViews.setTextViewText(R.id.stock_symbol,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL)));
         remoteViews.setTextViewText(R.id.price,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE)));
         remoteViews.setTextViewText(R.id.change,cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE)));

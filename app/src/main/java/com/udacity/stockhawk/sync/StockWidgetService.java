@@ -10,6 +10,8 @@ import android.widget.RemoteViewsService;
 
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
+import com.udacity.stockhawk.data.QuoteColumns;
+import com.udacity.stockhawk.data.StockHawkProvider;
 import com.udacity.stockhawk.data.StockWidgetProvider;
 
 /**
@@ -40,17 +42,12 @@ public class StockWidgetService extends RemoteViewsService {
                 final long identityToken = Binder.clearCallingIdentity();
 
                 // This is the same query from MyStocksActivity
-                data = getContentResolver().query(
-                        Contract.Quote.URI,
-                        new String[] {
-                                Contract.Quote._ID,
-                                Contract.Quote.COLUMN_SYMBOL,
-                                Contract.Quote.COLUMN_PRICE,
-                                Contract.Quote.COLUMN_PERCENTAGE_CHANGE,
-                                Contract.Quote.COLUMN_ABSOLUTE_CHANGE
-                        },
-                        null,
-                        null,
+
+                data = getContentResolver().query(StockHawkProvider.Quotes.CONTENT_URI,
+                        new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL, QuoteColumns.BIDPRICE,
+                                QuoteColumns.PERCENT_CHANGE, QuoteColumns.CHANGE, QuoteColumns.ISUP},
+                        QuoteColumns.ISCURRENT + " = ?",
+                        new String[]{"1"},
                         null);
                 Binder.restoreCallingIdentity(identityToken);
             }
@@ -79,29 +76,13 @@ public class StockWidgetService extends RemoteViewsService {
                 views.setTextViewText(R.id.stock_symbol, data.getString(data.getColumnIndex
                         (getResources().getString(R.string.string_symbol))));
 
-                if (data.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE) > 0) {
+                if (data.getInt(data.getColumnIndex("is_up")) == 1) {
                     views.setInt(R.id.change, getResources().getString(R.string.string_set_background_resource), R.drawable.percent_change_pill_green);
                 } else {
                     views.setInt(R.id.change, getResources().getString(R.string.string_set_background_resource), R.drawable.percent_change_pill_red);
                 }
 
-                //if (Utils.showPercent) {
-                //    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(Contract.Quote.POSITION_PERCENTAGE_CHANGE)));
-                //} else {
-                    views.setTextViewText(R.id.change, data.getString(data.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE)));
-                //}
-
-                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-                Log.i("STOCK HAWK PRUEBA","JFJEJWJFJEWJFE");
-
-                Log.i("STOCK HAWK PRUEBA", data.getString(data.getColumnIndex
-                        (getResources().getString(R.string.string_symbol))));
-                Log.i("STOCK HAWK PRUEBA", data.getString(data.getColumnIndex
-                        (getResources().getString(R.string.string_symbol))));
-                Log.i("STOCK HAWK PRUEBA", data.getString(data.getColumnIndex
-                        (getResources().getString(R.string.string_symbol))));
+                views.setTextViewText(R.id.change, data.getString(data.getColumnIndex("percent_change")));
 
 
 
@@ -125,10 +106,8 @@ public class StockWidgetService extends RemoteViewsService {
             @Override
             public long getItemId(int position) {
                 // Get the row ID for the view at the specified position
-                if (data != null && data.moveToPosition(position)) {
-                    final int QUOTES_ID_COL = 0;
-                    return data.getLong(QUOTES_ID_COL);
-                }
+                if (data.moveToPosition(position))
+                    return data.getLong(data.getColumnIndexOrThrow(QuoteColumns._ID));
                 return position;
             }
 
